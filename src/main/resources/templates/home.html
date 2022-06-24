@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Title</title>
+</head>
+<body>
+
+    <!--Картинки-->
+    <svg display="none">
+        <symbol id="back" viewBox="0 0 32 32">
+            <g>
+                <path class="cls-1" d="M30,29a1,1,0,0,1-.81-.41l-2.12-2.92A18.66,18.66,0,0,0,15,18.25V22a1,1,0,0,1-1.6.8l-12-9a1,1,0,0,1,0-1.6l12-9A1,1,0,0,1,15,4V8.24A19,19,0,0,1,31,27v1a1,1,0,0,1-.69.95A1.12,1.12,0,0,1,30,29ZM14,16.11h.1A20.68,20.68,0,0,1,28.69,24.5l.16.21a17,17,0,0,0-15-14.6,1,1,0,0,1-.89-1V6L3.67,13,13,20V17.11a1,1,0,0,1,.33-.74A1,1,0,0,1,14,16.11Z"/>
+            </g>
+        </symbol>
+    </svg>
+
+
+    <div class="main">
+        <div class="main-box">
+            <div class="path">
+                <svg class="back-icon">
+                    <use xlink:href="#back"></use>
+                </svg>
+                <div class="path-box">
+                    <h1 class="path-text">Path:</h1>
+                </div>
+            </div>
+            <div class="content">
+                <div class="content-info">
+                    <div class="content-type">Type</div>
+                    <div class="content-name">Name</div>
+                    <div class="content-size">Size</div>
+                    <div class="content-date-create">Date Create</div>
+                    <div class="content-date-update">Date Update</div>
+                </div>
+
+                <div class="content-file">
+                    <div class="file-type">
+                        <div class="green-circle"></div>
+                    </div>
+                    <div class="file-info">Name directory</div>
+                    <div style="width: 20%;" class="file-info"></div>
+                    <div style="width: 20%;" class="file-info">23.04.2022 23:03</div>
+                    <div style="width: 20%;" class="file-info">17.06.2022 13:34</div>
+                </div>
+
+                <div class="content-file">
+                    <div class="file-type">
+                        <div class="blue-circle"></div>
+                    </div>
+                    <div class="file-info">Name file</div>
+                    <div style="width: 20%;" class="file-info">123,34 Гб</div>
+                    <div style="width: 20%;" class="file-info">23.04.2022 23:03</div>
+                    <div style="width: 20%;" class="file-info">17.06.2022 13:34</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
