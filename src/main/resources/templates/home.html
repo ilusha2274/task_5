@@ -20,13 +20,19 @@
     <div class="main">
         <div class="main-box">
             <div class="path">
-                <svg class="back-icon">
-                    <use xlink:href="#back"></use>
-                </svg>
+                <form method="post" action="/back">
+                    <input type="hidden" th:attr="value=${path}" name="path">
+                    <button style="padding:0" class="back-icon">
+                        <svg class="back-icon">
+                            <use xlink:href="#back"></use>
+                        </svg>
+                    </button>
+                </form>
                 <div class="path-box">
-                    <h1 class="path-text">Path:</h1>
+                    <h1 th:text ="${path}" class="path-text" th:attr="value=${path}">Path:</h1>
                 </div>
             </div>
+
             <div class="content">
                 <div class="content-info">
                     <div class="content-type">Type</div>
@@ -36,25 +42,10 @@
                     <div class="content-date-update">Date Update</div>
                 </div>
 
-                <div class="content-file">
-                    <div class="file-type">
-                        <div class="green-circle"></div>
-                    </div>
-                    <div class="file-info">Name directory</div>
-                    <div style="width: 20%;" class="file-info"></div>
-                    <div style="width: 20%;" class="file-info">23.04.2022 23:03</div>
-                    <div style="width: 20%;" class="file-info">17.06.2022 13:34</div>
-                </div>
-
-                <div class="content-file">
-                    <div class="file-type">
-                        <div class="blue-circle"></div>
-                    </div>
-                    <div class="file-info">Name file</div>
-                    <div style="width: 20%;" class="file-info">123,34 Гб</div>
-                    <div style="width: 20%;" class="file-info">23.04.2022 23:03</div>
-                    <div style="width: 20%;" class="file-info">17.06.2022 13:34</div>
-                </div>
+                <th:block th:each="file : ${listFile}">
+                    <div th:if="${file.isDirectory}" th:include="blocks/blockDirectory :: blockDirectory"></div>
+                    <div class="content-file" th:unless="${file.isDirectory}" th:include="blocks/blockFile :: blockFile"></div>
+                </th:block>
             </div>
         </div>
     </div>

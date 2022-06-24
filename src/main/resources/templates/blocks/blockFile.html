@@ -1,0 +1,9 @@
+<div th:fragment="blockFile" xmlns:th="http://www.thymeleaf.org">
+    <div class="file-type">
+        <div class="blue-circle"></div>
+    </div>
+    <div class="file-info" th:text ="${file.nameFile}"></div>
+    <div style="width: 20%;" class="file-info" th:text ="${file.sizeFile}"></div>
+    <div style="width: 20%;" class="file-info" th:text ="${file.dateCreateFile}"></div>
+    <div style="width: 20%;" class="file-info" th:text ="${file.dateUpdateFile}"></div>
+</div>

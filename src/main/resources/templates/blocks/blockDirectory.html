@@ -1,0 +1,18 @@
+<div th:fragment="blockDirectory" xmlns:th="http://www.thymeleaf.org">
+    <form method="post" action="next">
+    <button class="content-file" style="padding:0">
+            <div class="file-type">
+                <div class="green-circle"></div>
+            </div>
+            <div class="file-info" th:text ="${file.nameFile}"></div>
+            <div style="width: 20%;" class="file-info"></div>
+            <div style="width: 20%;" class="file-info" th:text ="${file.dateCreateFile}"></div>
+            <div style="width: 20%;" class="file-info" th:text ="${file.dateUpdateFile}"></div>
+            <input type="hidden" th:attr="value=${path}" name="path">
+            <input type="hidden" th:attr="value=${file.nameFile}" id="nameFile" name="nameFile">
+        </button>
+    </form>
+</div>
+
+
+
