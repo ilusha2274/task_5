@@ -22,7 +22,7 @@ public class SpringConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public IFileManager fileManager (){
+    public IFileManager fileManager() {
         return new FileManager();
     }
 

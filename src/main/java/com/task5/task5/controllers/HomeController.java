@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.io.File;
 import java.nio.file.Path;
-import java.time.format.DateTimeFormatter;
 
 @Controller
 public class HomeController {
@@ -19,40 +18,37 @@ public class HomeController {
         this.fileManager = fileManager;
     }
 
-    static final private Path startPath = Path.of("testDirectory").toAbsolutePath();
-    static final private DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
-
     @GetMapping("/")
-    public String printHome(String path, Model model, String nameFile) {
-        model.addAttribute("listFile", fileManager.getFileInfo(startPath));
-        model.addAttribute("path", startPath);
+    public String printHome(String path, Model model) {
+        model.addAttribute("path", "");
+        model.addAttribute("listFile", fileManager.returnAllDisk());
+
         return "home";
     }
 
     @PostMapping("/next")
     public String printNext(String path, Model model, String nameFile) {
         String fileSeparator = File.separator;
-        Path newPath = Path.of(path + fileSeparator + nameFile);
+        Path newPath;
+
+        if (path.equals("")) newPath = Path.of(path + nameFile);
+        else newPath = Path.of(path + fileSeparator + nameFile);
+
         model.addAttribute("listFile", fileManager.getFileInfo(newPath));
         model.addAttribute("path", newPath);
+
         return "home";
     }
 
     @PostMapping("/back")
     public String printPrevious(String path, Model model) {
-//        if (path.equals(startPath.toString())){
-//            return "redirect:/";
-//        }
-
         Path newPath = Path.of(path).getParent();
-        if (newPath == null){
-            model.addAttribute("path", path);
-            model.addAttribute("listFile", fileManager.getFileInfo(Path.of(path)));
-            model.addAttribute("exception", "Это корневая директория!");
-            return "home";
-        }
+
+        if (newPath == null) return "redirect:/";
+
         model.addAttribute("listFile", fileManager.getFileInfo(newPath));
         model.addAttribute("path", newPath);
+
         return "home";
     }
 

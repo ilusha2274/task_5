@@ -6,5 +6,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 
 public interface IFileManager {
-    ArrayList<FileInfo> getFileInfo (Path path);
+    ArrayList<FileInfo> getFileInfo(Path path);
+
+    ArrayList<FileInfo> returnAllDisk();
 }

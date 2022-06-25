@@ -2,6 +2,7 @@ package com.task5.task5.managers;
 
 import com.task5.task5.domain.FileInfo;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
@@ -21,7 +22,7 @@ public class FileManager implements IFileManager {
             DirectoryStream<Path> directoryStream = Files.newDirectoryStream(path);
             for (Path p : directoryStream) {
                 if (Files.isDirectory(p)) {
-                    arr.add(new FileInfo(true, p.getFileName().toString(), "", getDateCreate(p), getDateUpdate(p)));
+                    arr.add(0, new FileInfo(true, p.getFileName().toString(), "", getDateCreate(p), getDateUpdate(p)));
                 } else {
                     arr.add(new FileInfo(false, p.getFileName().toString(), getSizeFile(p), getDateCreate(p), getDateUpdate(p)));
                 }
@@ -30,6 +31,17 @@ public class FileManager implements IFileManager {
             throw new RuntimeException();
         }
         return arr;
+    }
+
+    @Override
+    public ArrayList<FileInfo> returnAllDisk() {
+        File[] paths = File.listRoots();
+
+        ArrayList<FileInfo> fileInfo = new ArrayList<>();
+        for (File path : paths) {
+            fileInfo.add(new FileInfo(true, path.toString(), "", "", ""));
+        }
+        return fileInfo;
     }
 
     private String getDateCreate(Path path) throws IOException {
