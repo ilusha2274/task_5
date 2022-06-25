@@ -28,20 +28,27 @@
                         </svg>
                     </button>
                 </form>
-                <div class="path-box">
-                    <h1 th:text ="${path}" class="path-text" th:attr="value=${path}">Path:</h1>
-                </div>
+                <form method="post" class="path-box" action="/">
+                    <input name="newPath" class="path-input" th:attr="value=${path}" placeholder="Path:">
+                    <input name="oldPath" type="hidden" class="path-input" th:attr="value=${path}">
+                </form>
+            </div>
+            <div class="exception">
+                <p class="exception-text" th:text="${exception}"></p>
             </div>
 
+<!--            <div class="path-box">-->
+<!--                <input class="path-input" th:attr="value=${path}">-->
+<!--                <h1 th:text ="${path}" class="path-text" th:attr="value=${path}">Path:</h1>-->
+<!--            </div>-->
+            <div class="content-info">
+                <div class="content-type">Type</div>
+                <div class="content-name">Name</div>
+                <div class="content-size">Size</div>
+                <div class="content-date-create">Date Create</div>
+                <div class="content-date-update">Date Update</div>
+            </div>
             <div class="content">
-                <div class="content-info">
-                    <div class="content-type">Type</div>
-                    <div class="content-name">Name</div>
-                    <div class="content-size">Size</div>
-                    <div class="content-date-create">Date Create</div>
-                    <div class="content-date-update">Date Update</div>
-                </div>
-
                 <th:block th:each="file : ${listFile}">
                     <div th:if="${file.isDirectory}" th:include="blocks/blockDirectory :: blockDirectory"></div>
                     <div class="content-file" th:unless="${file.isDirectory}" th:include="blocks/blockFile :: blockFile"></div>
