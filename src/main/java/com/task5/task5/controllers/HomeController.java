@@ -31,8 +31,10 @@ public class HomeController {
         String fileSeparator = File.separator;
         Path newPath;
 
-        if (path.equals("")) newPath = Path.of(path + nameFile);
-        else newPath = Path.of(path + fileSeparator + nameFile);
+        if (path.equals(""))
+            newPath = Path.of(path + nameFile);
+        else
+            newPath = Path.of(path + fileSeparator + nameFile);
 
         model.addAttribute("listFile", fileManager.getFileInfo(newPath));
         model.addAttribute("path", newPath);
@@ -61,8 +63,10 @@ public class HomeController {
             model.addAttribute("path", oldPath);
             model.addAttribute("listFile", fileManager.getFileInfo(Path.of(oldPath)));
             model.addAttribute("exception", "Неверно введен Path!");
+
             return "home";
         }
+
         return "home";
     }
 }
